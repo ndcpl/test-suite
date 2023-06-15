@@ -6,6 +6,8 @@ create table `memberData` (
   `memberEmail` varchar(50) NOT NULL,
   `memberFName` varchar(20) NOT NULL,
   `memberLName` varchar(20) NOT NULL,
+  `memberUName` varchar(20) NOT NULL,
+  `memberPhone` varchar(20) NOT NULL,
   `memberAddress` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`memberID`)
 );

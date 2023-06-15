@@ -110,3 +110,53 @@ document.addEventListener("DOMContentLoaded", function () {
     return /^[0-9]+$/.test(phone);
   }
 });
+
+// import MySQL
+const mysql = require('mysql');
+
+// create connection
+const connection = mysql.createConnection({
+  host: 'localhost', // 数据库主机名
+  user: 'your_username', // 数据库用户名
+  password: 'your_password', // 数据库密码
+  database: 'shoesWebsite' // 数据库名称
+});
+
+// connect db
+connection.connect((err) => {
+  if (err) {
+    console.error('database connection error:', err);
+    throw err;
+  }
+  console.log('database connection success');
+});
+
+const user = {
+  memberUName: username,
+  password: password,
+  memberEmail: email,
+  memberFName: firstName,
+  memberLName: lastName,
+  memberPhone: phone,
+  //address: address,
+  //apt_door_number: aptDoorNumber,
+  //state: state,
+  //city: city,
+  //zip_code: zipCode
+};
+
+//save user data to database
+function registerUser(user) {
+  const sql = 'INSERT INTO memberData SET ?';
+  connection.query(sql, user, (err, result) => {
+    if (err) {
+      console.error('register user error:', err);
+      throw err;
+    }
+    console.log('register user success');
+  });
+}
+
+registerUser(user);
+// close connection
+connection.end();
