@@ -119,7 +119,6 @@ const connection = mysql.createConnection({
   host: 'localhost', // 数据库主机名
   user: 'your_username', // 数据库用户名
   password: 'your_password', // 数据库密码
-  database: 'shoesWebsite' // 数据库名称
 });
 
 // connect db
@@ -130,6 +129,34 @@ connection.connect((err) => {
   }
   console.log('database connection success');
 });
+
+connection.connect(function(err) {
+  if(err) throw err;
+  console.log("connected");
+  connection.query("create database `shoesWebsite`", function(err, result){
+    if(err) throw err;
+    console.log("DB Created");
+  });
+});
+
+connection.connect(function(err){
+  if(err) throw err;
+  var SQLTable1 = "create table `memberData` (`memberID` int NOT NULL AUTO_INCREMENT,`password` varchar(20) DEFAULT NULL,`memberEmail` varchar(50) NOT NULL,`memberFName` varchar(20) NOT NULL,`memberLName` varchar(20) NOT NULL,`memberUName` varchar(20) NOT NULL, `memberPhone` varchar(20) NOT NULL, `memberAddress` varchar(100) DEFAULT NULL, PRIMARY KEY (`memberID`));"
+  connection.query(SQLTable1, function(err, result){
+    if(err) throw err;
+    console.log("Table 1 created");
+  });
+});
+
+connection.connect(function(err){
+  if(err) throw err;
+  var SQLTable2 = "Create table `customerService`(`inquiryID` int NOT NULL auto_increment,`INQFName` varchar(20) NOT NULL,`INQLName` varchar(20) NOT NULL,`INQEmail` varchar(50) NOT NULL,`inquiry` varchar(500) NOT NULL, PRIMARY KEY (`inquiryID`));"
+  connection.query(SQLTable2, function(err, result){
+    if(err) throw err;
+    console.log("Table 2 created");
+  });
+});
+
 
 const user = {
   memberUName: username,
