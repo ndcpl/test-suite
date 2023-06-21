@@ -1,78 +1,74 @@
-a {
-  color: grey;
-  font-family: "Tilt Prism", cursive;
-  font-size: 30px;
-  text-align: left;
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delphpreme - Join Us</title>
+    <link rel="stylesheet" href="/styles/contactus.css" type="text/css" />
+    <script src="main.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair:ital,wght@1,500&family=Tilt+Prism&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="top-bar">
+        <div class="left-side">
+          <ul class="categories">
+            <li><a href="aboutus.html">About us</a></li>
+            <li><a href="productlist.html">Product page</a></li>
+            <li><a href="contactus.html">Contact us</a></li>
+            <li>
+              <a href="membership.html" class="membership icon">Membership</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
-a.membership.icon {
-  color: orange;
-  font-family: "Tilt Prism", cursive;
-  font-size: 30px;
-  text-align: right;
-}
+    <main>
+      <section class="page-title">
+        <h1>Contact Us</h1>
+        <h2>
+          Feel free to contact us by phone or email inquiry, we will get back to
+          you during office hour.
+        </h2>
+      </section>
+      <section>
+        <h2>Time: From 9 am to 5 pm Monday through Friday</h2>
+        <h2>Phone number: 201-111-2222</h2>
+        <h2>
+          If you have any questions, please feel free to left a message below:
+        </h2>
+      </section>
+      <section class="Staff-contact-form">
+        <form id="Staff-contact-form">
+          <label for="First name">First name:</label>
+          <input type="text" id="firstname" name="firstname" required />
 
-h1 {
-  color: black;
-  font-family: "Playfair", serif;
-  font-size: xx-large;
-  font-weight: bold;
-  text-align: center;
-  margin: 0;
-  padding: 20px 0;
-  color: black;
-}
+          <label for="Last name">Last Name:</label>
+          <input type="text" id="lastname" name="lastname" required />
 
-h2 {
-  color: black;
-  font-family: "Playfair", serif;
-  font-size: larger;
-  text-align: ce;
-  margin: 0;
-  padding: 20px 0;
-  color: black;
-}
+          <label for="Email Address">Email Address:</label>
+          <input type="text" id="email" name="email" required />
 
-.join-now,
-.back-to-home {
-  position: fixed;
-  left: 0;
-  right: 0;
-  text-align: center;
-  bottom: 20px;
-}
+          <label for="Phone number">Phone number:</label>
+          <input type="number" id="phone" name="phone" required />
 
-form label {
-  display: block;
-  margin-bottom: 5px;
-}
+          <label for="Inquiry">Inquiry:</label>
+          <input type="text" id="inquiry" name="inquiry" required />
 
-#inquiry {
-  height: 100px;
-}
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
 
-.back-to-home {
-  bottom: 0;
-}
+      <!-- Link back to the homepage -->
+      <a href="homepage.html" class="back-to-home">Back to Home</a>
+    </main>
 
-.categories {
-  display: flex;
-  justify-content: space-between;
-}
-
-body {
-  background-image: url("/images/jordan2.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 900px;
-  height: 900px;
-  margin: 0 auto;
-  background-color: aliceblue;
-  padding: 0 40px 40px 40px;
-  border: 5px solid black;
-}
-
-img {
-  display: block;
-  margin: 0 auto;
-}
+    <footer>
+      <!-- Footer content -->
+    </footer>
+  </body>
+</html>
