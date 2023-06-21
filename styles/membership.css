@@ -65,3 +65,17 @@ img {
   display: block;
   margin: 0 auto;
 }
+
+.error-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  color: red;
+}
+
+.error-message {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: bolder;
+  color: red;
+}
