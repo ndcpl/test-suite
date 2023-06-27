@@ -119,6 +119,8 @@ document.addEventListener("DOMContentLoaded", function () {
     validateMembershipForm();
   });
 
+  
+
   function validateMembershipForm() {
     const firstnameInput = document.getElementById("firstname");
     const lastnameInput = document.getElementById("lastname");
@@ -352,3 +354,90 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// import MySQL
+const mysql = require('mysql');
+
+// create connection
+const connection = mysql.createConnection({
+  host: 'localhost', // 数据库主机名
+  user: 'your_username', // 数据库用户名
+  password: 'your_password', // 数据库密码
+});
+
+// connect db
+connection.connect((err) => {
+  if (err) {
+    console.error('database connection error:', err);
+    throw err;
+  }
+  console.log('database connection success');
+});
+
+connection.connect(function(err) {
+  if(err) throw err;
+  console.log("connected");
+  connection.query("create database `shoesWebsite`", function(err, result){
+    if(err) throw err;
+    console.log("DB Created");
+  });
+});
+
+connection.connect(function(err){
+  if(err) throw err;
+  var SQLTable1 = "create table `memberData` (`memberID` int NOT NULL AUTO_INCREMENT,`password` varchar(20) DEFAULT NULL,`memberEmail` varchar(50) NOT NULL,`memberFName` varchar(20) NOT NULL,`memberLName` varchar(20) NOT NULL,`memberUName` varchar(20) NOT NULL, `memberPhone` varchar(20) NOT NULL, `memberAddress` varchar(100) DEFAULT NULL, PRIMARY KEY (`memberID`));"
+  connection.query(SQLTable1, function(err, result){
+    if(err) throw err;
+    console.log("Table 1 created");
+  });
+});
+
+connection.connect(function(err){
+  if(err) throw err;
+  var SQLTable2 = "Create table `customerService`(`inquiryID` int NOT NULL auto_increment,`INQFName` varchar(20) NOT NULL,`INQLName` varchar(20) NOT NULL,`INQEmail` varchar(50) NOT NULL,`inquiry` varchar(500) NOT NULL, PRIMARY KEY (`inquiryID`));"
+  connection.query(SQLTable2, function(err, result){
+    if(err) throw err;
+    console.log("Table 2 created");
+  });
+});
+
+function submitMemberdata() {
+  const firstnameInput = document.getElementById("firstname");
+  const lastnameInput = document.getElementById("lastname");
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+  const emailInput = document.getElementById("email");
+  const phoneInput = document.getElementById("phone");
+  const addressInput = document.getElementById("address");
+
+  const firstname = firstnameInput.value.trim();
+  const lastname = lastnameInput.value.trim();
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+  const email = emailInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const address = address.value.trim();
+  var query ="INSERT INTO `memberData`( password, memberEmail, memberFName, memberLName, memberUName, memberPhone, memberAddress) VALUES("+password+", "+email+", "+firstname+", "+lastname+", "+username+", "+phone+", "+address+")";
+  if(err) throw err;
+  connection.query()
+}
+
+function submitInquiry() {
+  const firstnameInput = document.getElementById("firstname");
+  const lastnameInput = document.getElementById("lastname");
+  const emailInput = document.getElementById("email");
+  const _phoneInput = document.getElementById("phone");
+  const inquiryInput = document.getElementById("inquiry");
+
+  const firstname = firstnameInput.value.trim();
+  const lastname = lastnameInput.value.trim();
+  const email = emailInput.value.trim();
+  const _phoneNumber = _phoneInput.value.trim();
+  const inquiry = inquiryInput.value.trim();
+
+  var query = "INSERT INTO `customerService`(INQFName, INQLName, INQEmail, inquiry) VALUES("+firstname+", "+lastname+", "+email+", "+inquiry+")";
+  if(err) throw err;
+  connection.query()
+}
+
+connection.end();
